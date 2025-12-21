@@ -1,0 +1,526 @@
+
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="UTF-8" />
+    <title>Mini Python no Browser</title>
+
+    <style>
+        body {
+            background: #f4f4f4;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+        }
+
+        python {
+            display: block;
+            background: #fff;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        python div {
+            text-align: center;
+            width: 100%;
+        }
+
+        h1 { color: #3776ab; }
+        h2 { color: purple; }
+        h3 { color: orange; text-align: center; }
+        b  { color: #ff9900; }
+
+        img {
+            display: inline-block;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        canvas {
+            margin-top: 10px;
+            border-radius: 10px;
+            background: #ffffff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+        }
+    </style>
+</head>
+
+<body>
+<h1>linguagem programação abba23</h1>
+
+<!-- BLOCO 1 -->
+<python>
+    nome = "Super Calculadora"
+    print("<h1>" + nome + "</h1>")
+
+    a = 500
+    b = 250
+    resultado = a + b
+
+    print("<p>A soma de <b>", a, "</b> com <b>", b, "</b> é:</p>")
+    print("<h2>", resultado, "</h2><br>")
+    print(23 * 45)
+    print("<br>Eu sou a maria")
+    print("<br><h3>Deus Jesus em poesis Maria</h3>")
+    print('<img src="https://img.freepik.com/foto-gratis/nina-oracion-concepto-paz-esperanza-suenos_78949-114.jpg?size=626&amp;ext=jpg" width="500px"><br>')
+    print("O CSS DESTE CODIGO DEVE sempre inserir a div python no css")
+</python>
+
+<!-- BLOCO 2 -->
+<python>
+    print("olá mundo")
+
+    cars = ["Ford", "Volvo", "BMW"]
+    print("Lista de carros:", cars)
+    print("Segundo carro:", cars[1])
+
+    x = 0
+    while x < 3:
+        print("x =", x)
+        x = x + 1
+
+    for i in range(3):
+        print("i em range(3):", i)
+
+    for j in range(2, 7, 2):
+        print("j em range(2,7,2):", j)
+
+    def soma(a, b):
+        resultado = a + b
+        return resultado
+
+    print("Soma 10 + 20 =", soma(10, 20))
+
+    valor = 7
+    if valor < 5:
+        print("Valor é pequeno")
+    elif valor < 10:
+        print("Valor é médio")
+    else:
+        print("Valor é grande")
+
+    ligado = True
+    desligado = False
+    condicao = (10 > 5) and not False
+    print("Estado ligado:", ligado, "desligado:", desligado, "condição lógica:", condicao)
+
+    pessoa = {"nome": "Maria", "idade": 30}
+    print("Pessoa:", pessoa)
+
+    nome = "Abba"
+    print("len(cars) =", len(cars))
+    print("len(nome) =", len(nome))
+
+    texto = """
+    Isto é uma string
+    multilinha em pseudo-Python,
+    convertida para template literal em JS.
+    """
+    print(texto)
+</python>
+
+<!-- BLOCO 3: GRÁFICOS -->
+<python>
+    import graficos
+
+    print("<h2>Gráfico de Linha</h2>")
+    dados = [10, 20, 15, 30, 25, 40]
+    plot_line(dados, "Crescimento ao longo do tempo")
+
+    print("<h2>Gráfico de Barras</h2>")
+    categorias = ["A", "B", "C", "D"]
+    valores = [5, 12, 8, 15]
+    plot_bar(categorias, valores, "Comparação de categorias")
+
+    print("<h2>Gráfico de Pizza</h2>")
+    plot_pizza(["Maçã","Banana","Cereja","Laranja"], [30,20,25,25], "Frutas")
+</python>
+
+<!-- BLOCO 4 -->
+<python>
+    print("<h2>Abba o meu objetivo de vida</h2>")
+
+    print('<iframe width="510" height="384" src="https://www.youtube.com/embed/8tE0GjSQpes?list=RD8tE0GjSQpes" frameborder="0" allowfullscreen></iframe>')
+
+    print('EVITAR O COMFLITO ASPAS NO python html')
+</python>
+
+<script>
+/* ============================
+   FUNÇÕES AUXILIARES
+============================ */
+
+function splitArgsRespectingStrings(argString) {
+    const result = [];
+    let current = "";
+    let inSingle = false;
+    let inDouble = false;
+
+    for (let i = 0; i < argString.length; i++) {
+        const ch = argString[i];
+
+        if (ch === "'" && !inDouble) {
+            inSingle = !inSingle;
+            current += ch;
+        } else if (ch === '"' && !inSingle) {
+            inDouble = !inDouble;
+            current += ch;
+        } else if (ch === "," && !inSingle && !inDouble) {
+            if (current.trim().length > 0) result.push(current.trim());
+            current = "";
+        } else {
+            current += ch;
+        }
+    }
+
+    if (current.trim().length > 0) result.push(current.trim());
+    return result;
+}
+
+function convertMultilineStrings(code) {
+    return code.replace(/"""\s*([\s\S]*?)\s*"""/g, (match, inner) => {
+        const safeInner = inner.replace(/`/g, "\\`");
+        return "`" + safeInner + "`";
+    });
+}
+
+function convertLenCalls(code) {
+    return code.replace(/\blen\(([^)]+)\)/g, (match, inside) => {
+        return "(" + inside.trim() + ").length";
+    });
+}
+
+/* ============================
+   TRANSPILER PYTHON → JS
+============================ */
+
+function transpilePythonToJS(code) {
+    code = code.replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+    code = convertMultilineStrings(code);
+    code = convertLenCalls(code);
+
+    code = code
+        .replace(/\bTrue\b/g, "true")
+        .replace(/\bFalse\b/g, "false")
+        .replace(/\band\b/g, "&&")
+        .replace(/\bor\b/g, "||")
+        .replace(/\bnot\b/g, "!");
+
+    const lines = code.split("\n");
+    const out = [];
+    const indentStack = [];
+
+    function closeBlocks(currentIndent) {
+        while (indentStack.length > 0 && indentStack[indentStack.length - 1] >= currentIndent) {
+            indentStack.pop();
+            out.push("}");
+        }
+    }
+
+    for (let raw of lines) {
+        const line = raw.replace(/\t/g, "    ");
+        const trimmed = line.trim();
+
+        if (trimmed === "") {
+            out.push("");
+            continue;
+        }
+
+        const indent = line.match(/^ */)[0].length;
+
+        if (trimmed.startsWith("#")) {
+            out.push("// " + trimmed.slice(1));
+            continue;
+        }
+
+        if (trimmed.startsWith("import ")) {
+            out.push("// import graficos (ignorado)");
+            continue;
+        }
+
+        if (trimmed.startsWith("print(") && trimmed.endsWith(")")) {
+            const argsInside = trimmed.slice(6, -1);
+            const args = splitArgsRespectingStrings(argsInside);
+            const jsArgs = args.map(arg => {
+                if (arg.startsWith('"') || arg.startsWith("'") || arg.startsWith("`")) {
+                    return arg;
+                }
+                return `String(${arg})`;
+            });
+            out.push("print(" + jsArgs.join(' + " " + ') + ");");
+            continue;
+        }
+
+        if (trimmed.startsWith("def ") && trimmed.endsWith(":")) {
+            closeBlocks(indent);
+            const match = trimmed.match(/^def\s+([a-zA-Z_]\w*)\((.*?)\):$/);
+            if (match) {
+                const name = match[1];
+                const params = match[2];
+                out.push(`function ${name}(${params}) {`);
+                indentStack.push(indent);
+                continue;
+            }
+        }
+
+        if (trimmed.startsWith("while ") && trimmed.endsWith(":")) {
+            closeBlocks(indent);
+            const condition = trimmed.slice(6, -1).trim();
+            out.push(`while (${condition}) {`);
+            indentStack.push(indent);
+            continue;
+        }
+
+        if (trimmed.startsWith("for ") && trimmed.endsWith(":")) {
+            closeBlocks(indent);
+            const match = trimmed.match(/^for\s+([a-zA-Z_]\w*)\s+in\s+range\((.*?)\):$/);
+            if (match) {
+                const varName = match[1];
+                const args = splitArgsRespectingStrings(match[2]);
+                let start = "0", end = "0", step = "1";
+
+                if (args.length === 1) end = args[0];
+                else if (args.length === 2) { start = args[0]; end = args[1]; }
+                else if (args.length === 3) { start = args[0]; end = args[1]; step = args[2]; }
+
+                out.push(
+`for (let ${varName} = ${start}; (${step} >= 0 ? ${varName} < ${end} : ${varName} > ${end}); ${varName} += ${step}) {`
+                );
+                indentStack.push(indent);
+                continue;
+            }
+        }
+
+        if (trimmed.startsWith("if ") && trimmed.endsWith(":")) {
+            closeBlocks(indent);
+            const condition = trimmed.slice(3, -1).trim();
+            out.push(`if (${condition}) {`);
+            indentStack.push(indent);
+            continue;
+        }
+
+        if (trimmed.startsWith("elif ") && trimmed.endsWith(":")) {
+            closeBlocks(indent);
+            const condition = trimmed.slice(5, -1).trim();
+            out.push(`else if (${condition}) {`);
+            indentStack.push(indent);
+            continue;
+        }
+
+        if (trimmed === "else:") {
+            closeBlocks(indent);
+            out.push("else {");
+            indentStack.push(indent);
+            continue;
+        }
+
+        if (trimmed.startsWith("return ")) {
+            const expr = trimmed.slice(7).trim();
+            out.push(`return ${expr};`);
+            continue;
+        }
+
+        if (!trimmed.startsWith("<") && trimmed.includes("=")) {
+            const match = trimmed.match(/^([a-zA-Z_]\w*)\s*=\s*(.+)$/);
+            if (match) {
+                closeBlocks(indent);
+                const name = match[1];
+                const expr = match[2];
+                out.push(`let ${name} = ${expr};`);
+                continue;
+            }
+        }
+
+        closeBlocks(indent);
+        out.push(trimmed);
+    }
+
+    closeBlocks(0);
+    return out.join("\n");
+}
+
+/* ============================
+   GRÁFICOS
+============================ */
+
+function createPlotHelpers(tag) {
+
+    function createCanvas(title) {
+        const container = document.createElement("div");
+        container.style.marginTop = "10px";
+
+        if (title) {
+            const h = document.createElement("div");
+            h.innerHTML = `<strong>${title}</strong>`;
+            container.appendChild(h);
+        }
+
+        const canvas = document.createElement("canvas");
+        canvas.width = 500;
+        canvas.height = 250;
+        container.appendChild(canvas);
+        tag.appendChild(container);
+
+        return canvas.getContext("2d");
+    }
+
+    function plot_line(data, title) {
+        if (!Array.isArray(data) || data.length === 0) return;
+        const ctx = createCanvas(title);
+
+        const w = ctx.canvas.width;
+        const h = ctx.canvas.height;
+        const margin = 30;
+
+        const max = Math.max(...data);
+        const min = Math.min(...data);
+        const range = (max - min) || 1;
+
+        ctx.clearRect(0, 0, w, h);
+        ctx.strokeStyle = "#333";
+        ctx.lineWidth = 1;
+
+        ctx.beginPath();
+        ctx.moveTo(margin, margin);
+        ctx.lineTo(margin, h - margin);
+        ctx.lineTo(w - margin, h - margin);
+        ctx.stroke();
+
+        ctx.strokeStyle = "#3776ab";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+
+        data.forEach((val, i) => {
+            const x = margin + (i / (data.length - 1 || 1)) * (w - 2 * margin);
+            const y = h - margin - ((val - min) / range) * (h - 2 * margin);
+            if (i === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+        });
+
+        ctx.stroke();
+    }
+
+    function plot_bar(labels, values, title) {
+        if (!Array.isArray(labels) || !Array.isArray(values)) return;
+        if (labels.length === 0 || values.length === 0) return;
+
+        const ctx = createCanvas(title);
+
+        const w = ctx.canvas.width;
+        const h = ctx.canvas.height;
+        const margin = 30;
+
+        const max = Math.max(...values);
+        const range = max || 1;
+
+        ctx.clearRect(0, 0, w, h);
+
+        ctx.strokeStyle = "#333";
+        ctx.beginPath();
+        ctx.moveTo(margin, h - margin);
+        ctx.lineTo(w - margin, h - margin);
+        ctx.stroke();
+
+        const barWidth = (w - 2 * margin) / values.length * 0.7;
+        const gap = (w - 2 * margin) / values.length * 0.3;
+
+        values.forEach((val, i) => {
+            const x = margin + i * (barWidth + gap) + gap / 2;
+            const barHeight = (val / range) * (h - 2 * margin);
+            const y = h - margin - barHeight;
+
+            ctx.fillStyle = "#ff9900";
+            ctx.fillRect(x, y, barWidth, barHeight);
+
+            ctx.fillStyle = "#000";
+            ctx.font = "12px Segoe UI";
+            ctx.textAlign = "center";
+            ctx.fillText(labels[i], x + barWidth / 2, h - margin + 15);
+        });
+    }
+
+    /* === NOVO: GRÁFICO DE PIZZA === */
+    function plot_pizza(labels, values, title) {
+        if (!Array.isArray(labels) || !Array.isArray(values)) return;
+        if (labels.length === 0 || values.length === 0) return;
+
+        const ctx = createCanvas(title || "Gráfico de Pizza");
+        const w = ctx.canvas.width;
+        const h = ctx.canvas.height;
+        const radius = Math.min(w, h) / 2 - 20;
+        const centerX = w / 2;
+        const centerY = h / 2;
+
+        const total = values.reduce((a, b) => a + b, 0);
+        let startAngle = 0;
+
+        const colors = [
+            "#ff6384", "#36a2eb", "#ffcd56",
+            "#4bc0c0", "#9966ff", "#ff9f40"
+        ];
+
+        values.forEach((val, i) => {
+            const sliceAngle = (val / total) * Math.PI * 2;
+            const endAngle = startAngle + sliceAngle;
+
+            ctx.beginPath();
+            ctx.moveTo(centerX, centerY);
+            ctx.fillStyle = colors[i % colors.length];
+            ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+            ctx.closePath();
+            ctx.fill();
+
+            const midAngle = startAngle + sliceAngle / 2;
+            const labelX = centerX + Math.cos(midAngle) * (radius * 0.65);
+            const labelY = centerY + Math.sin(midAngle) * (radius * 0.65);
+
+            ctx.fillStyle = "#000";
+            ctx.font = "14px Segoe UI";
+            ctx.textAlign = "center";
+            ctx.fillText(labels[i], labelX, labelY);
+
+            startAngle = endAngle;
+        });
+    }
+
+    return { plot_line, plot_bar, plot_pizza };
+}
+
+/* ============================
+   EXECUÇÃO DOS <python>
+============================ */
+
+async function bootstrapPython() {
+    const pythonTags = document.querySelectorAll("python");
+
+    for (const tag of pythonTags) {
+        let code = tag.innerHTML.trim();
+        tag.innerHTML = "";
+
+        const print = (...args) => {
+            const output = args.join(" ");
+            const div = document.createElement("div");
+            div.innerHTML = output;
+            tag.appendChild(div);
+        };
+
+        const { plot_line, plot_bar, plot_pizza } = createPlotHelpers(tag);
+
+        try {
+            const js = transpilePythonToJS(code);
+            const runner = new Function("print", "plot_line", "plot_bar", "plot_pizza", `(async()=>{${js}})()`);
+            await runner(print, plot_line, plot_bar, plot_pizza);
+        } catch (err) {
+            tag.innerHTML = `<div style="color:red; border:1px solid red; padding:5px;">
+                <b>Erro:</b> ${err.message}
+            </div>`;
+        }
+    }
+}
+
+window.addEventListener("load", bootstrapPython);
+</script>
+
+</body>
+</html>
