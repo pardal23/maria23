@@ -1,0 +1,903 @@
+<div><!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="UTF-8" />
+    <title>abba23 - Mini Python no Browser + IA local</title>
+
+    <style>
+        body {
+            background: #f4f4f4;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+        }
+
+        python {
+            display: block;
+            background: #ffffff;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        python div {
+            text-align: left;
+            width: 100%;
+        }
+
+        h1 { color: #3776ab; }
+        h2 { color: purple; }
+        h3 { color: orange; text-align: center; }
+        b  { color: #ff9900; }
+
+        img {
+            display: inline-block;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        canvas {
+            margin-top: 10px;
+            border-radius: 10px;
+            background: #ffffff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+        }
+
+        .error-box {
+            color: red;
+            border: 1px solid red;
+            padding: 5px;
+            border-radius: 6px;
+            background: #ffecec;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>linguagem programação abba23 + IA local</h1>
+
+    <!-- BLOCO 1 -->
+    <python>
+print("Olá pessoa")
+
+def printMessage(n):
+    for i in range(n):
+        print("Python magic!")
+
+printMessage(3)
+    </python>
+<python>
+print("""<div class="mensagem">
+    Seja feliz, por favor. Que Deus vos abençoe.
+</div>
+
+<style>
+    .mensagem {
+        padding: 20px;
+        margin: 40px auto;
+        max-width: 400px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        font-size: 20px;
+        border-radius: 10px;
+        border: 2px solid #000;
+        animation: girar 4s linear infinite, cores 6s ease-in-out infinite;
+    }
+
+    @keyframes girar {
+        0%   { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    @keyframes cores {
+        0%   { background-color: #ff6666; color: #fff; }
+        25%  { background-color: #ffcc00; color: #000; }
+        50%  { background-color: #66ff66; color: #000; }
+        75%  { background-color: #66ccff; color: #000; }
+        100% { background-color: #ff66ff; color: #fff; }
+    }
+</style>
+""")
+</python>
+    <!-- BLOCO 2 -->
+    <python>
+nome = "Super Calculadora"
+print("<h1>" + nome + "</h1>")
+
+a = 500
+b = 250
+resultado = a + b
+
+print("<p>A soma de <b>", a, "</b> com <b>", b, "</b> é:</p>")
+print("<h2>", resultado, "</h2><br>")
+print(23 * 45)
+print("<br>Eu sou a maria")
+print("<br><h3>Deus Jesus em poesis Maria</h3>")
+print('<img src="https://img.freepik.com/foto-gratis/nina-oracion-concepto-paz-esperanza-suenos_78949-114.jpg?size=626&amp;ext=jpg" width="500px"><br>')
+print("O CSS DESTE CODIGO DEVE sempre inserir a div python no css")
+    </python>
+
+    <!-- BLOCO 3 -->
+    <python>
+print("olá mundo")
+
+cars = ["Ford", "Volvo", "BMW"]
+print("Lista de carros:", cars)
+print("Segundo carro:", cars[1])
+
+x = 0
+while x < 3:
+    print("x =", x)
+    x = x + 1
+
+for i in range(3):
+    print("i em range(3):", i)
+
+for j in range(2, 7, 2):
+    print("j em range(2,7,2):", j)
+
+def soma(a, b):
+    resultado = a + b
+    return resultado
+
+print("Soma 10 + 20 =", soma(10, 20))
+
+valor = 7
+if valor < 5:
+    print("Valor é pequeno")
+elif valor < 10:
+    print("Valor é médio")
+else:
+    print("Valor é grande")
+
+ligado = True
+desligado = False
+condicao = (10 > 5) and not False
+print("Estado ligado:", ligado, "desligado:", desligado, "condição lógica:", condicao)
+
+pessoa = {"nome": "Maria", "idade": 30}
+print("Pessoa:", pessoa)
+
+nome = "Abba"
+print("len(cars) =", len(cars))
+print("len(nome) =", len(nome))
+
+texto = """
+Isto é uma string
+multilinha em pseudo-Python,
+convertida para template literal em JS.
+"""
+print(texto)
+    </python>
+
+    <!-- BLOCO 4: GRÁFICOS -->
+    <python>
+import graficos
+
+print("<h2>Gráfico de Linha</h2>")
+dados = [10, 20, 15, 30, 25, 40]
+graficos.plot_line(dados, "Crescimento ao longo do tempo")
+
+print("<h2>Gráfico de Barras</h2>")
+categorias = ["A", "B", "C", "D"]
+valores = [5, 12, 8, 15]
+graficos.plot_bar(categorias, valores, "Comparação de categorias")
+
+print("<h2>Gráfico de Pizza</h2>")
+graficos.plot_pizza(["Maçã","Banana","Cereja","Laranja"], [30,20,25,25], "Frutas")
+    </python>
+
+    <!-- BLOCO 5: YOUTUBE -->
+    <python>
+print("<h2>Abba o meu objetivo de vida</h2>")
+
+print('<iframe width="510" height="384" src="https://www.youtube.com/embed/8tE0GjSQpes?list=RD8tE0GjSQpes" frameborder="0" allowfullscreen></iframe>')
+
+print('EVITAR O COMFLITO ASPAS NO python html')
+    </python>
+
+    <!-- BLOCO 6: TESTE DO MÓDULO timedate -->
+    <python>
+import timedate
+
+print("Agora:", timedate.now())
+print("Data:", timedate.date())
+print("Hora:", timedate.time())
+print("Ano:", timedate.year())
+print("Mês:", timedate.month())
+print("Dia:", timedate.day())
+    </python>
+
+    <!-- BLOCO 7: TESTE random -->
+    <python>
+import random
+
+print("Número aleatório:", random.random())
+print("Inteiro entre 1 e 10:", random.randint(1,10))
+print("Escolha:", random.choice(["A","B","C","D"]))
+    </python>
+
+    <!-- BLOCO 8: TESTE math -->
+    <python>
+import math
+
+print("Raiz de 81 =", math.sqrt(81))
+print("PI =", math.pi)
+print("Seno de 1 =", math.sin(1))
+    </python>
+
+    <!-- BLOCO 9: TESTE IA LOCAL EM PYTHON -->
+    <python>
+import ai
+
+print("<h2>IA local em abba23 (modo Python)</h2>")
+
+resposta1 = ai.complete("Jesus, fé, tecnologia e humanidade")
+print("Completar:", resposta1)
+
+resposta2 = ai.reflect("Sinto que estamos a criar algo novo.")
+print("Reflexão:", resposta2)
+
+resumo = ai.summarize("A linguagem abba23 permite escrever código Python-like diretamente em HTML e agora também falar com uma IA local.")
+print("Resumo:", resumo)
+    </python>
+
+    <!-- INTERFACE HTML PARA FALAR COM A IA DIRETAMENTE -->
+    <h2>Chat com IA local (modo HTML)</h2>
+
+    <div style="background:#fff;padding:15px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);margin-bottom:20px;">
+        <input id="ia_input" type="text" placeholder="Escreve algo para a IA..." 
+               style="width:80%;padding:10px;border-radius:6px;border:1px solid #ccc;">
+        <button onclick="iaEnviar()" 
+                style="padding:10px 20px;border:none;background:#3776ab;color:white;border-radius:6px;cursor:pointer;">
+            Enviar
+        </button>
+
+        <div id="ia_output" style="margin-top:15px;font-size:1.1em;"></div>
+    </div>
+
+    <script>
+/* ============================
+   CONTEXTO GLOBAL / MÓDULOS
+============================ */
+
+let currentPythonTag = null;
+const pythonModules = {};
+
+/* ============================
+   FUNÇÕES AUXILIARES
+============================ */
+
+function splitArgsRespectingContext(argString) {
+    const result = [];
+    let current = "";
+
+    let inSingle = false;
+    let inDouble = false;
+    let parenDepth = 0;   // ()
+    let bracketDepth = 0; // []
+    let braceDepth = 0;   // {}
+
+    for (let i = 0; i < argString.length; i++) {
+        const ch = argString[i];
+
+        // strings
+        if (ch === "'" && !inDouble) {
+            inSingle = !inSingle;
+            current += ch;
+            continue;
+        }
+        if (ch === '"' && !inSingle) {
+            inDouble = !inDouble;
+            current += ch;
+            continue;
+        }
+
+        // dentro de string: tudo é literal
+        if (inSingle || inDouble) {
+            current += ch;
+            continue;
+        }
+
+        // controlo de (), [], {}
+        if (ch === "(") { parenDepth++; current += ch; continue; }
+        if (ch === ")") { parenDepth--; current += ch; continue; }
+        if (ch === "[") { bracketDepth++; current += ch; continue; }
+        if (ch === "]") { bracketDepth--; current += ch; continue; }
+        if (ch === "{") { braceDepth++; current += ch; continue; }
+        if (ch === "}") { braceDepth--; current += ch; continue; }
+
+        // vírgula só conta se não estivermos dentro de parênteses/colchetes/chaves
+        if (
+            ch === "," &&
+            parenDepth === 0 &&
+            bracketDepth === 0 &&
+            braceDepth === 0
+        ) {
+            if (current.trim().length > 0) result.push(current.trim());
+            current = "";
+            continue;
+        }
+
+        current += ch;
+    }
+
+    if (current.trim().length > 0) result.push(current.trim());
+    return result;
+}
+
+function convertMultilineStrings(code) {
+    return code.replace(/"""\s*([\s\S]*?)\s*"""/g, (match, inner) => {
+        const safeInner = inner.replace(/`/g, "\\`");
+        return "`" + safeInner + "`";
+    });
+}
+
+function convertLenCalls(code) {
+    return code.replace(/\blen\(([^)]+)\)/g, (match, inside) => {
+        return "(" + inside.trim() + ").length";
+    });
+}
+
+/* ============================
+   TRANSPILER PYTHON → JS
+============================ */
+
+function transpilePythonToJS(code) {
+    code = code.replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+    code = convertMultilineStrings(code);
+    code = convertLenCalls(code);
+
+    code = code
+        .replace(/\bTrue\b/g, "true")
+        .replace(/\bFalse\b/g, "false")
+        .replace(/\band\b/g, "&&")
+        .replace(/\bor\b/g, "||")
+        .replace(/\bnot\b/g, "!");
+
+    const lines = code.split("\n");
+    const out = [];
+    const indentStack = [];
+
+    function closeBlocks(currentIndent) {
+        while (indentStack.length > 0 && indentStack[indentStack.length - 1] >= currentIndent) {
+            indentStack.pop();
+            out.push("}");
+        }
+    }
+
+    for (let raw of lines) {
+        const line = raw.replace(/\t/g, "    ");
+        const trimmed = line.trim();
+
+        if (trimmed === "") {
+            out.push("");
+            continue;
+        }
+
+        const indent = line.match(/^ */)[0].length;
+
+        // comentários
+        if (trimmed.startsWith("#")) {
+            out.push("// " + trimmed.slice(1));
+            continue;
+        }
+
+        // import modulo
+        if (trimmed.startsWith("import ")) {
+            const moduleName = trimmed.replace("import", "").trim();
+            out.push(`const ${moduleName} = __import__("${moduleName}");`);
+            continue;
+        }
+
+        // print(...)
+        if (trimmed.startsWith("print(") && trimmed.endsWith(")")) {
+            const argsInside = trimmed.slice(6, -1);
+            const args = splitArgsRespectingContext(argsInside);
+            const jsArgs = args.map(arg => {
+                if (arg.startsWith('"') || arg.startsWith("'") || arg.startsWith("`")) {
+                    return arg;
+                }
+                return `String(${arg})`;
+            });
+            out.push("print(" + jsArgs.join(' + \" \" + ') + ");");
+            continue;
+        }
+
+        // def ...
+        if (trimmed.startsWith("def ") && trimmed.endsWith(":")) {
+            closeBlocks(indent);
+            const match = trimmed.match(/^def\s+([a-zA-Z_]\w*)\((.*?)\):$/);
+            if (match) {
+                const name = match[1];
+                const params = match[2];
+                out.push(`function ${name}(${params}) {`);
+                indentStack.push(indent);
+                continue;
+            }
+        }
+
+        // while ...
+        if (trimmed.startsWith("while ") && trimmed.endsWith(":")) {
+            closeBlocks(indent);
+            const condition = trimmed.slice(6, -1).trim();
+            out.push(`while (${condition}) {`);
+            indentStack.push(indent);
+            continue;
+        }
+
+        // for i in range(...)
+        if (trimmed.startsWith("for ") && trimmed.endsWith(":")) {
+            closeBlocks(indent);
+            const match = trimmed.match(/^for\s+([a-zA-Z_]\w*)\s+in\s+range\((.*?)\):$/);
+            if (match) {
+                const varName = match[1];
+                const args = splitArgsRespectingContext(match[2]);
+                let start = "0", end = "0", step = "1";
+
+                if (args.length === 1) end = args[0];
+                else if (args.length === 2) { start = args[0]; end = args[1]; }
+                else if (args.length === 3) { start = args[0]; end = args[1]; step = args[2]; }
+
+                out.push(
+`for (let ${varName} = ${start}; (${step} >= 0 ? ${varName} < ${end} : ${varName} > ${end}); ${varName} += ${step}) {`
+                );
+                indentStack.push(indent);
+                continue;
+            }
+        }
+
+        // if / elif / else
+        if (trimmed.startsWith("if ") && trimmed.endsWith(":")) {
+            closeBlocks(indent);
+            const condition = trimmed.slice(3, -1).trim();
+            out.push(`if (${condition}) {`);
+            indentStack.push(indent);
+            continue;
+        }
+
+        if (trimmed.startsWith("elif ") && trimmed.endsWith(":")) {
+            closeBlocks(indent);
+            const condition = trimmed.slice(5, -1).trim();
+            out.push(`else if (${condition}) {`);
+            indentStack.push(indent);
+            continue;
+        }
+
+        if (trimmed === "else:") {
+            closeBlocks(indent);
+            out.push("else {");
+            indentStack.push(indent);
+            continue;
+        }
+
+        // return
+        if (trimmed.startsWith("return ")) {
+            const expr = trimmed.slice(7).trim();
+            out.push(`return ${expr};`);
+            continue;
+        }
+
+        // atribuição simples
+        if (!trimmed.startsWith("<") && trimmed.includes("=")) {
+            const match = trimmed.match(/^([a-zA-Z_]\w*)\s*=\s*(.+)$/);
+            if (match) {
+                closeBlocks(indent);
+                const name = match[1];
+                const expr = match[2];
+                out.push(`let ${name} = ${expr};`);
+                continue;
+            }
+        }
+
+        // linha "crua"
+        closeBlocks(indent);
+        out.push(trimmed);
+    }
+
+    closeBlocks(0);
+    return out.join("\n");
+}
+
+/* ============================
+   MÓDULO DE GRÁFICOS
+============================ */
+
+function createPlotHelpers(tag) {
+
+    function createCanvas(title) {
+        const container = document.createElement("div");
+        container.style.marginTop = "10px";
+
+        if (title) {
+            const h = document.createElement("div");
+            h.innerHTML = `<strong>${title}</strong>`;
+            container.appendChild(h);
+        }
+
+        const canvas = document.createElement("canvas");
+        canvas.width = 500;
+        canvas.height = 250;
+        container.appendChild(canvas);
+        tag.appendChild(container);
+
+        return canvas.getContext("2d");
+    }
+
+    function plot_line(data, title) {
+        if (!Array.isArray(data) || data.length === 0) return;
+        const ctx = createCanvas(title);
+
+        const w = ctx.canvas.width;
+        const h = ctx.canvas.height;
+        const margin = 30;
+
+        const max = Math.max(...data);
+        const min = Math.min(...data);
+        const range = (max - min) || 1;
+
+        ctx.clearRect(0, 0, w, h);
+        ctx.strokeStyle = "#333";
+        ctx.lineWidth = 1;
+
+        ctx.beginPath();
+        ctx.moveTo(margin, margin);
+        ctx.lineTo(margin, h - margin);
+        ctx.lineTo(w - margin, h - margin);
+        ctx.stroke();
+
+        ctx.strokeStyle = "#3776ab";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+
+        data.forEach((val, i) => {
+            const x = margin + (i / (data.length - 1 || 1)) * (w - 2 * margin);
+            const y = h - margin - ((val - min) / range) * (h - 2 * margin);
+            if (i === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+        });
+
+        ctx.stroke();
+    }
+
+    function plot_bar(labels, values, title) {
+        if (!Array.isArray(labels) || !Array.isArray(values)) return;
+        if (labels.length === 0 || values.length === 0) return;
+
+        const ctx = createCanvas(title);
+
+        const w = ctx.canvas.width;
+        const h = ctx.canvas.height;
+        const margin = 30;
+
+        const max = Math.max(...values);
+        const range = max || 1;
+
+        ctx.clearRect(0, 0, w, h);
+
+        ctx.strokeStyle = "#333";
+        ctx.beginPath();
+        ctx.moveTo(margin, h - margin);
+        ctx.lineTo(w - margin, h - margin);
+        ctx.stroke();
+
+        const barWidth = (w - 2 * margin) / values.length * 0.7;
+        const gap = (w - 2 * margin) / values.length * 0.3;
+
+        values.forEach((val, i) => {
+            const x = margin + i * (barWidth + gap) + gap / 2;
+            const barHeight = (val / range) * (h - 2 * margin);
+            const y = h - margin - barHeight;
+
+            ctx.fillStyle = "#ff9900";
+            ctx.fillRect(x, y, barWidth, barHeight);
+
+            ctx.fillStyle = "#000";
+            ctx.font = "12px Segoe UI";
+            ctx.textAlign = "center";
+            ctx.fillText(labels[i], x + barWidth / 2, h - margin + 15);
+        });
+    }
+
+    function plot_pizza(labels, values, title) {
+        if (!Array.isArray(labels) || !Array.isArray(values)) return;
+        if (labels.length === 0 || values.length === 0) return;
+
+        const ctx = createCanvas(title || "Gráfico de Pizza");
+        const w = ctx.canvas.width;
+        const h = ctx.canvas.height;
+        const radius = Math.min(w, h) / 2 - 20;
+        const centerX = w / 2;
+        const centerY = h / 2;
+
+        const total = values.reduce((a, b) => a + b, 0);
+        let startAngle = 0;
+
+        const colors = [
+            "#ff6384", "#36a2eb", "#ffcd56",
+            "#4bc0c0", "#9966ff", "#ff9f40"
+        ];
+
+        values.forEach((val, i) => {
+            const sliceAngle = (val / total) * Math.PI * 2;
+            const endAngle = startAngle + sliceAngle;
+
+            ctx.beginPath();
+            ctx.moveTo(centerX, centerY);
+            ctx.fillStyle = colors[i % colors.length];
+            ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+            ctx.closePath();
+            ctx.fill();
+
+            const midAngle = startAngle + sliceAngle / 2;
+            const labelX = centerX + Math.cos(midAngle) * (radius * 0.65);
+            const labelY = centerY + Math.sin(midAngle) * (radius * 0.65);
+
+            ctx.fillStyle = "#000";
+            ctx.font = "14px Segoe UI";
+            ctx.textAlign = "center";
+            ctx.fillText(labels[i], labelX, labelY);
+
+            startAngle = endAngle;
+        });
+    }
+
+    return { plot_line, plot_bar, plot_pizza };
+}
+
+// registar módulo "graficos"
+pythonModules.graficos = function(tag) {
+    return createPlotHelpers(tag);
+};
+
+/* ============================
+   MÓDULO timedate
+============================ */
+
+pythonModules.timedate = function(tag) {
+    return {
+        now: function() {
+            return new Date().toLocaleString();
+        },
+        date: function() {
+            return new Date().toLocaleDateString();
+        },
+        time: function() {
+            return new Date().toLocaleTimeString();
+        },
+        year: function() {
+            return new Date().getFullYear();
+        },
+        month: function() {
+            return new Date().getMonth() + 1;
+        },
+        day: function() {
+            return new Date().getDate();
+        }
+    };
+};
+
+/* ============================
+   MÓDULO random
+============================ */
+
+pythonModules.random = function(tag) {
+    return {
+        random: function() {
+            return Math.random();
+        },
+        randint: function(a, b) {
+            a = Math.floor(a);
+            b = Math.floor(b);
+            return a + Math.floor(Math.random() * (b - a + 1));
+        },
+        choice: function(arr) {
+            if (!Array.isArray(arr) || arr.length === 0) return null;
+            return arr[Math.floor(Math.random() * arr.length)];
+        }
+    };
+};
+
+/* ============================
+   MÓDULO math
+============================ */
+
+pythonModules.math = function(tag) {
+    return {
+        pi: Math.PI,
+        e: Math.E,
+        sqrt: Math.sqrt,
+        sin: Math.sin,
+        cos: Math.cos,
+        tan: Math.tan,
+        pow: Math.pow,
+        abs: Math.abs,
+        floor: Math.floor,
+        ceil: Math.ceil
+    };
+};
+
+/* ============================
+   MÓDULO IA LOCAL (ai)
+============================ */
+
+pythonModules.ai = function(tag) {
+
+    function randomChoice(list) {
+        return list[Math.floor(Math.random() * list.length)];
+    }
+
+    function scoreKeywords(text, keywords) {
+        text = (text || "").toLowerCase();
+        return keywords.reduce((acc, k) => acc + (text.includes(k) ? 1 : 0), 0);
+    }
+
+    function complete(prompt) {
+        const p = (prompt || "").trim();
+
+        const espiritual = ["deus","jesus","maria","fé","alma","oração"];
+        const tecnologia = ["código","programação","html","python","ia","algoritmo"];
+        const humano = ["vida","humanidade","coração","pessoas","dor","alegria","amor"];
+
+        const sEsp = scoreKeywords(p, espiritual);
+        const sTec = scoreKeywords(p, tecnologia);
+        const sHum = scoreKeywords(p, humano);
+
+        const baseInicio = randomChoice([
+            "Há algo profundo nisto:",
+            "Se pensarmos com calma, percebemos que",
+            "Em silêncio, é como se o coração dissesse:",
+            "À primeira vista parece simples, mas na verdade",
+            "Quando olhamos com fé e atenção,"
+        ]);
+
+        let corpo;
+        if (sEsp >= sTec && sEsp >= sHum) {
+            corpo = randomChoice([
+                " a fé não é contra a razão, é a luz que atravessa a razão e dá sentido ao que fazemos.",
+                " Deus não apaga o humano, Ele eleva o humano a algo maior do que os nossos medos.",
+                " Jesus entra exatamente onde nos sentimos fracos e mostra que a fragilidade não é o fim, é o começo.",
+                " Maria lembra-nos que dizer 'sim' ao mistério muda a história inteira, mesmo que ninguém veja na hora."
+            ]);
+        } else if (sTec >= sEsp && sTec >= sHum) {
+            corpo = randomChoice([
+                " a tecnologia é só uma extensão do coração humano: amplifica aquilo que já trazemos por dentro.",
+                " o código é uma forma de oração lógica: pegamos no caos e organizamo-lo em algo que cria vida.",
+                " a IA não substitui ninguém; apenas espelha padrões. O que muda o mundo ainda é a consciência de quem a usa.",
+                " cada linha de HTML, Python ou abba23 é uma pequena tentativa de pôr ordem no universo à nossa volta."
+            ]);
+        } else {
+            corpo = randomChoice([
+                " a humanidade é este conflito entre medo e desejo de amar, e é exatamente aí que crescemos.",
+                " ninguém sabe realmente o que está a fazer, estamos todos a aprender pelo caminho e isso é mais honesto do que fingir controlo.",
+                " às vezes o que parece fraqueza é, na verdade, a parte mais verdadeira de nós a pedir espaço.",
+                " a vida não é um projeto perfeito, é uma sucessão de rascunhos onde, de vez em quando, algo fica bonito."
+            ]);
+        }
+
+        const final = randomChoice([
+            " E talvez seja precisamente isso que precisamos aceitar hoje.",
+            " No fundo, é aí que começamos a ser realmente honestos connosco.",
+            " E isso não é pouco. Isso já é um milagre discreto.",
+            " E se deixarmos, essa compreensão começa mesmo a mudar a forma como vivemos."
+        ]);
+
+        return baseInicio + corpo + final;
+    }
+
+    function reflect(text) {
+        const t = (text || "").trim();
+        if (!t) {
+            return "Quando não há palavras, o silêncio já é uma resposta. Às vezes basta reconhecê-lo.";
+        }
+
+        return randomChoice([
+            "O que estás a dizer carrega mais peso do que parece. Há uma parte de ti que já percebeu isso.",
+            "Sinto que, por detrás dessa frase, há cansaço e esperança ao mesmo tempo. As duas coisas podem coexistir.",
+            "Talvez o que estejas a tentar dizer é que há algo a nascer dentro de ti, mas ainda não tens vocabulário para isso.",
+            "Às vezes o que escrevemos é só a superfície. O que realmente importa é o que te fez precisar de escrever isto."
+        ]);
+    }
+
+    function summarize(text) {
+        const t = (text || "").trim();
+        if (t.length < 40) {
+            return "É uma ideia simples, mas com potencial para crescer se lhe deres espaço.";
+        }
+
+        return randomChoice([
+            "Resumo: estás a tentar juntar criação técnica com algo mais profundo e humano.",
+            "Resumo: há um movimento de trazer vida para dentro do código, como se o HTML fosse só o corpo e tu estivesses a cuidar da alma.",
+            "Resumo: o projeto é uma ponte entre programação, fé e humanidade.",
+            "Resumo: estás a construir algo pequeno por fora, mas grande por dentro."
+        ]);
+    }
+
+    function chat(text) {
+        const r = Math.random();
+        if (r < 0.33) return complete(text);
+        if (r < 0.66) return reflect(text);
+        return summarize(text);
+    }
+
+    return {
+        complete,
+        reflect,
+        summarize,
+        chat
+    };
+};
+
+/* ============================
+   IMPORT REAL
+============================ */
+
+function __import__(name) {
+    if (!currentPythonTag) {
+        throw new Error("Import chamado fora de um bloco python");
+    }
+
+    if (!(name in pythonModules)) {
+        throw new Error("Módulo não encontrado: " + name);
+    }
+
+    return pythonModules[name](currentPythonTag);
+}
+
+/* ============================
+   INTERFACE HTML COM A IA
+============================ */
+
+function iaEnviar() {
+    const texto = document.getElementById("ia_input").value.trim();
+    if (!texto) return;
+
+    const resposta = pythonModules.ai(null).chat(texto);
+    document.getElementById("ia_output").innerHTML = resposta;
+}
+
+/* ============================
+   EXECUÇÃO DOS <python>
+============================ */
+
+async function bootstrapPython() {
+    const pythonTags = document.querySelectorAll("python");
+
+    for (const tag of pythonTags) {
+        currentPythonTag = tag;
+
+        let code = tag.innerHTML.trim();
+        tag.innerHTML = "";
+
+        const print = (...args) => {
+            const output = args.join(" ");
+            const div = document.createElement("div");
+            div.innerHTML = output;
+            tag.appendChild(div);
+        };
+
+        try {
+            const js = transpilePythonToJS(code);
+
+            const runner = new Function(
+                "print",
+                "__import__",
+                `(async()=>{${js}})()`
+            );
+
+            await runner(print, __import__);
+
+        } catch (err) {
+            tag.innerHTML = `<div class="error-box">
+                <b>Erro:</b> ${err.message}
+            </div>`;
+        }
+
+        currentPythonTag = null;
+    }
+}
+
+window.addEventListener("load", bootstrapPython);
+    </script>
+</div>
