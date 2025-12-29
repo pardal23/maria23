@@ -1,0 +1,150 @@
+<div>
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Mini Search Server Pro</title>
+<style>
+  body { font-family: Arial; background:#111; color:#eee; padding:20px; }
+  input { width:100%; padding:12px; font-size:18px; border-radius:6px; border:none; outline:none; }
+  .result { margin-top:20px; background:#222; padding:12px; border-radius:6px; }
+  a { color:#6cf; }
+  .hint { font-size:13px; color:#aaa; margin-top:6px; }
+</style>
+</head>
+<body>
+
+<h2>🔍 Mini Search Server Pro</h2>
+<input id="search" placeholder="Ex: a; html | b; IA | u6; html | p6; segurança | tab; js | baseD; sql" />
+<div class="hint">
+Formato: <code>letra;</code> termo • Profundidade 6: <code>u6;</code> <code>p6;</code> • Técnicos: <code>tab;</code> <code>baseD;</code>
+</div>
+
+<div id="output"></div>
+
+<script>
+// ================= BASE INTERNA =================
+const data = [
+  { title:"JavaScript Básico", tags:["js","programação"], text:"Introdução ao JavaScript." },
+  { title:"HTML Estrutura", tags:["html","web"], text:"Tags essenciais do HTML." },
+  { title:"Node Server", tags:["node","backend"], text:"Servidor simples em Node.js." },
+  { title:"CSS Layout", tags:["css","design"], text:"Flexbox e Grid." }
+];
+
+// ================= MOTORES =================
+const engines = {
+  google: q => `https://www.google.com/search?q=${encodeURIComponent(q)}`,
+  bing: q => `https://www.bing.com/search?q=${encodeURIComponent(q)}`,
+  bingImages: q => `https://www.bing.com/images/search?q=${encodeURIComponent(q)}`,
+  bingNews: q => `https://www.bing.com/news/search?q=${encodeURIComponent(q)}`,
+  yt: q => `https://www.youtube.com/results?search_query=${encodeURIComponent(q)}`,
+  ddg: q => `https://duckduckgo.com/?q=${encodeURIComponent(q)}`,
+  wiki: q => `https://pt.wikipedia.org/wiki/${q.replace(/ /g,"_")}`
+};
+
+// ================= PROFUNDIDADE 6 =================
+function universalDepth6(term) {
+  return engines.bing(
+    `${term} overview basics documentation tutorial examples advanced`
+  );
+}
+
+function pentestDepth6(term) {
+  return engines.bing(
+    `${term} penetration testing ethical hacking owasp top 10 bug bounty`
+  );
+}
+
+// ================= MODOS POR LETRA ( ; MANTIDO ) =================
+const alphabetModes = {
+  "a;": q => engines.google("artigos " + q),
+  "b;": q => engines.bing(q),
+  "c;": q => engines.google("código " + q),
+  "d;": q => engines.google("documentação " + q),
+  "e;": q => engines.google(q),
+  "f;": q => engines.google("fóruns " + q),
+  "g;": q => engines.google("guias " + q),
+  "h;": q => engines.google("how to " + q),
+  "i;": q => engines.bingImages(q),
+  "j;": q => engines.google("javascript " + q),
+  "k;": q => engines.google("knowledge " + q),
+  "l;": q => engines.google("livros " + q),
+  "m;": q => engines.google("multimédia " + q),
+  "n;": q => engines.bingNews(q),
+  "o;": q => engines.google("opiniões " + q),
+  "p;": q => pentestDepth6(q),
+  "q;": q => engines.google("quotes " + q),
+  "r;": q => engines.google("referências " + q),
+  "s;": q => engines.google("scripts " + q),
+  "t;": q => engines.google("tutorial " + q),
+  "u;": q => universalDepth6(q),
+  "v;": q => engines.yt(q),
+  "w;": q => engines.wiki(q),
+  "x;": q => engines.google("exemplos " + q),
+  "y;": q => engines.yt(q),
+  "z;": q => engines.ddg(q),
+
+  // ===== EXPERIMENTO =====
+  "tab;": q => engines.bing("index examples technical " + q),
+  "baseD;": q => engines.bing("database documentation reference " + q)
+};
+
+// ================= INPUT =================
+const input = document.getElementById("search");
+const out = document.getElementById("output");
+
+input.addEventListener("keydown", e => {
+  if (e.key !== "Enter") return;
+
+  const raw = e.target.value.trim();
+  if (!raw) return;
+
+  // u6;
+  if (raw.toLowerCase().startsWith("u6;")) {
+    window.location.href = universalDepth6(raw.slice(3).trim());
+    return;
+  }
+
+  // p6;
+  if (raw.toLowerCase().startsWith("p6;")) {
+    window.location.href = pentestDepth6(raw.slice(3).trim());
+    return;
+  }
+
+  // letra; termo
+  const match = raw.match(/^([a-zA-Z]+;)\s*(.*)$/);
+  if (match && alphabetModes[match[1].toLowerCase()]) {
+    window.location.href =
+      alphabetModes[match[1].toLowerCase()](match[2]);
+    return;
+  }
+
+  // ================= PESQUISA INTERNA =================
+  const q = raw.toLowerCase();
+  const results = data.filter(item =>
+    item.title.toLowerCase().includes(q) ||
+    item.tags.some(t => t.includes(q))
+  );
+
+  out.innerHTML = `
+    <div class="result">
+      <b>Resultados internos:</b><br>
+      ${
+        results.length
+          ? results.map(r => `<b>${r.title}</b><br><small>${r.text}</small><br>`).join("")
+          : "Nenhum resultado interno."
+      }
+      <hr>
+      <b>Pesquisa externa:</b><br>
+      <a href="${engines.google(raw)}" target="_blank">Google</a><br>
+      <a href="${universalDepth6(raw)}" target="_blank">Universal 6</a><br>
+      <a href="${pentestDepth6(raw)}" target="_blank">Pentest 6</a>
+    </div>
+  `;
+});
+</script>
+
+</body>
+</html>
+
+</div>
