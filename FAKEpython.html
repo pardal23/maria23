@@ -1,0 +1,176 @@
+
+
+
+</div>
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Python Fake Executor</title>
+<style>
+    .python-output {
+        background: #f0f0f0;
+        padding: 6px;
+        margin: 4px 0;
+        border-left: 3px solid #444;
+        font-family: monospace;
+        display: inline-block;
+    }
+</style>
+</head>
+<body>
+
+<!-- DIV ORIGINAL -->
+<div id="conteudo">
+    2 + 2 = <python>
+print(2 + 2)
+</python>
+
+    <p>Mensagem: <python>
+print("Olá mundo!")
+</python></p>
+
+    <h2>Imagem: <python>
+print('<img src="https://stihi.ru/pics/2019/01/08/2511.jpg" width="450" height="400">')
+</python></h2>
+</div>
+
+<!-- OUTRA DIV COM CONTAS E STRINGS -->
+<div id="conteudo2">
+    <h3>Testes variados:</h3>
+
+    <p>Contas:
+    <python>
+print(10 + 20)
+print(50 - 7)
+print(6 * 8)
+print(144 / 12)
+print(2 ** 6)
+    </python>
+    </p>
+
+    <p>Strings:
+    <python>
+print("Olá, amigo!")
+print("Tudo funcionando perfeitamente.")
+print("Interpretador Python Fake ativo!")
+    </python>
+    </p>
+
+    <p>Texto + conta:
+    <python>
+print("A soma de 15 + 35 é: " + String(15 + 35))
+print("Multiplicação 9 * 9 = " + String(9 * 9))
+    </python>
+    </p>
+
+ <h1>video:
+    <python>
+print('<iframe width="561" height="428" src="https://www.youtube.com/embed/RawE7mwXTa4?list=RDRawE7mwXTa4" title="Dana Winner - One Moment In Time live" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>')
+
+
+    </python>
+    </h1>
+
+
+
+<!-- VERSÃO ESTILO BLOGGER/GOOGLE SITES (usa span.python) -->
+<div class="conteudo">
+    <h3>Versão compatível com Blogger / Google Sites:</h3>
+
+    <p>Mensagem:
+    <span class="python">
+print("Rodando também em Blogger / Google Sites")
+    </span>
+    </p>
+
+    <p>Imagem:
+    <span class="python">
+print('<img src="https://picsum.photos/200" width="200">')
+    </span>
+    </p>
+</div>
+
+<script>
+// Função que simula execução de Python com apenas print() em um TEXTO HTML
+function executarPythonFake(texto) {
+    // Primeiro, processa <python>...</python>
+    const regexPythonTag = /<python>([\s\S]*?)<\/python>/g;
+
+    texto = texto.replace(regexPythonTag, (match, code) => {
+        const linhas = code.trim().split("\n");
+        let saida = "";
+
+        for (let linha of linhas) {
+            linha = linha.trim();
+            if (linha === "") continue;
+
+            // Só permitir print(...)
+            if (!linha.startsWith("print(") || !linha.endsWith(")")) {
+                return "[ERRO: apenas print() é permitido]";
+            }
+
+            // Extrair conteúdo dentro de print(...)
+            const conteudo = linha.slice(6, -1);
+
+            try {
+                // Usar eval do JS para contas, strings e HTML
+                const resultado = eval(conteudo);
+                saida += resultado + "\n";
+            } catch {
+                return "[ERRO ao interpretar print()]";
+            }
+        }
+
+        return `<span class="python-output">${saida.trim()}</span>`;
+    });
+
+    // Depois, processa <span class="python">...</span> (para Blogger / Google Sites)
+    const regexSpanPython = /<span class="python">([\s\S]*?)<\/span>/g;
+
+    texto = texto.replace(regexSpanPython, (match, code) => {
+        const linhas = code.trim().split("\n");
+        let saida = "";
+
+        for (let linha of linhas) {
+            linha = linha.trim();
+            if (linha === "") continue;
+
+            if (!linha.startsWith("print(") || !linha.endsWith(")")) {
+                return "[ERRO: apenas print() é permitido]";
+            }
+
+            const conteudo = linha.slice(6, -1);
+
+            try {
+                const resultado = eval(conteudo);
+                saida += resultado + "\n";
+            } catch {
+                return "[ERRO ao interpretar print()]";
+            }
+        }
+
+        return `<span class="python-output">${saida.trim()}</span>`;
+    });
+
+    return texto;
+}
+
+// Processar várias divs ao carregar a página
+window.onload = () => {
+    // IDs começando com "conteudo"
+    document.querySelectorAll("div[id^='conteudo']").forEach(div => {
+        div.innerHTML = executarPythonFake(div.innerHTML);
+    });
+
+    // E também todas as divs com classe .conteudo
+    document.querySelectorAll("div.conteudo").forEach(div => {
+        div.innerHTML = executarPythonFake(div.innerHTML);
+    });
+};
+</script>
+
+</body>
+</html>
+</div>
