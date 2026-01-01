@@ -1,0 +1,24 @@
+<div>
+  Olá dia
+  <div class="mensagens"></div>
+  <script>
+    function criar() {
+      // Função que adiciona uma nova mensagem ou elemento
+      return function(mensagem) {
+        // Cria um novo elemento para a mensagem
+        const novoElemento = document.createElement('div');
+        novoElemento.innerHTML = mensagem; // Define o conteúdo da mensagem
+        document.querySelector(".mensagens").appendChild(novoElemento); // Adiciona o novo elemento
+      };
+    }
+
+    // Criar a função e armazená-la
+    const adicionarMensagem = criar();
+
+    // Chamadas da função
+    adicionarMensagem("Olá, Maria!");
+    adicionarMensagem(23 * 23);
+    adicionarMensagem("<img src='https://img.freepik.com/fotos-premium/uma-mulher-esta-orando-na-frente-de-um-fundo-abstrato-colorido_853677-77685.jpg' width='300px'>");
+    adicionarMensagem('<iframe width="569" height="428" src="https://www.youtube.com/embed/8tE0GjSQpes?list=RD8tE0GjSQpes" title="ABBA - The Winner Takes It All (1980)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>');
+  </script>
+</div>
